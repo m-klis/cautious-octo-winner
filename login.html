@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Hotspot Login</title>
+<meta http-equiv="pragma" content="no-cache" />
+<meta http-equiv="expires" content="-1" />	
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" />
+<link rel="stylesheet" href="login.css" media="screen">
+
+</head>
+<body class='login'>
+<form class="vertical-form" name="login" action="$(link-login-only)" method="post"
+$(if chap-id) onSubmit="return doLogin()" $(endif)>
+<input type="hidden" name="dst" value="$(link-orig)" />
+<input type="hidden" name="popup" value="true" />
+<div style="margin:0;padding:0;display:inline;"></div>
+
+<div class="box">
+<legend><img src="indonesia-flag.png" width="24" height="24"/>PANCASILA<img src="indonesia-flag.png" width="24" height="24"/></legend>
+<ul>
+<li><div id="show1"><input id="sila1" name="sila1" type="checkbox"></div></li>
+<li><div id="show2"><input id="sila2" name="sila2" type="checkbox"></div></li>
+<li><div id="show3"><input id="sila3" name="sila3" type="checkbox"></div></li>
+<li><div id="show4"><input id="sila4" name="sila4" type="checkbox"></div></li>
+<li><div id="show5"><input id="sila5" name="sila5" type="checkbox"></div></li>
+</br>
+<li><input id="showlog" name="showlog" type="checkbox"> Lanjutkan...</li>
+<li style="margin:5px;"> *) Cek semua checklist !</li> 
+</ul>
+</div>
+</form>
+$(if trial == 'yes')
+<form class="vertical-form" name="trial" action="$(link-login-only)?dst=$(link-orig-esc)&amp;username=T-$(mac-esc)" method="post">
+<div class='footer'>
+<p><button class="tombolku" name="tombolku" id="tombolku" disabled>Ayo Belajar !</button></p>$(endif)
+$(if error)<p><span style="color: #FF8080; font-size: 16px; font-weight:bold;">$(error)</span></p>$(endif)
+<p><a href="$(link-login)" style="font-weight:bold;color:white;">Muat Ulang . . .</a></p>
+<p style="font-weight:bold;color:white;">Hari : Senin - Sabtu, Jam  : 08.00 - 15.00</p>
+<p style="font-weight:bold;color:white;"></p>
+<!-- <p style="font-weight:bold;color:white;">Kendala Login WA - 081914574074</p> -->
+</div>
+</form>
+<script>
+document.getElementById("showlog").onclick = function() {enableLog()};
+function enableLog() {
+	var a = document.getElementById("sila1");
+	var b = document.getElementById("sila2");
+	var c = document.getElementById("sila3");
+	var d = document.getElementById("sila4");
+	var e = document.getElementById("sila5");
+	var f = document.getElementById("showlog").checked;
+	if(!a && !b && !c && !d && !e && f){
+		document.getElementById("tombolku").disabled = false;
+		document.getElementById("tombolku").style.background = '#FCC230';
+	} else {
+		document.getElementById("tombolku").disabled = true;
+		document.getElementById("tombolku").style.background = '#fdda81';
+	}
+}
+</script>
+<script>
+document.getElementById("sila1").onclick = function() {show1()};
+function show1() {
+  document.getElementById("show1").innerHTML = '1. Ketuhanan Yang Maha Esa.';
+}
+</script>
+<script>
+document.getElementById("sila2").onclick = function() {show2()};
+function show2() {
+  document.getElementById("show2").innerHTML = '2. Kemanusiaan yang adil dan beradab.';
+}
+</script>
+<script>
+document.getElementById("sila3").onclick = function() {show3()};
+function show3() {
+  document.getElementById("show3").innerHTML = '3. Persatuan Indonesia.';
+}
+</script>
+<script>
+document.getElementById("sila4").onclick = function() {show4()};
+function show4() {
+  document.getElementById("show4").innerHTML = '4. Kerakyatan yang dipimpin oleh hikmat kebijaksanaan dalam permusyawaratan dan perwakilan.';
+}
+</script>
+<script>
+document.getElementById("sila5").onclick = function() {show5()};
+function show5() {
+  document.getElementById("show5").innerHTML = '5. Keadilan sosial bagi seluruh rakyat Indonesia.';
+}
+</script>
+<script type="text/javascript">
+// document.login.username.focus();
+</script>
+<script type="text/javascript">
+document.oncontextmenu = function(){return false;}
+</script>
+<script type="text/javascript">
+// https://stackoverflow.com/questions/32762337/eliminate-white-space-from-input-field
+function removeSpaces(string) {
+	return string.split(' ').join('');
+}
+</script>
+</body>
+</html>
